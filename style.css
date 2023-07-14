@@ -1,0 +1,28 @@
+header a {
+  height: 100px;
+  color: black;
+}
+
+.carrousel-container {
+  width: 80%;
+  height: 500px;
+  margin-left: 220px;
+  margin-right: 50px;
+}
+.destacados {
+}
+.item1 {
+  display: flex;
+  justify-content: center;
+  height: 100px;
+}
+.item1 h1 {
+}
+
+.item2 {
+  width: 80%;
+  height: 500px;
+  margin-left: 220px;
+  margin-right: 50px;
+  background: black;
+}

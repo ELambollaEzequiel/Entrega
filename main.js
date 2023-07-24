@@ -76,10 +76,15 @@ let compra = prompt(
     "\n 4) " +
     mostrar(complicada(celulares), 3) +
     "\n 5) " +
+<<<<<<< Updated upstream
     mostrar(complicada(celulares), 4) +
     "\n 0) 📥 Salir b) Filtra por precio c) 💸Desea finalizar su compra?"
+=======
+    mostrar(4) +
+    "\n 0) 📥 Salir b) Filtrar por precio c)  c) 💸Desea finalizar su compra?"
+>>>>>>> Stashed changes
 );
-while (compra != "0" && compra != "c") {
+while (compra != "0" && compra != "c" && compra != "b") {
   switch (compra) {
     case "1":
       alert("Usted agrego : " + mostrar(modeloYPrecio, 0));
@@ -174,11 +179,50 @@ while (compra != "0" && compra != "c") {
       "\n 4) " +
       mostrar(modeloYPrecio, 3) +
       "\n 5) " +
+<<<<<<< Updated upstream
       mostrar(modeloYPrecio, 4) +
       "\n 0)📥 Salir b) Filtra por precio c) 💸Desea finalizar su compra? "
+=======
+      mostrar(4) +
+      "\n 0)📥 Salir b) Filtrar por precio c) 💸Desea finalizar su compra? "
+>>>>>>> Stashed changes
   );
 }
 
+//
+while (compra == "b") {
+  let filtro = prompt("seleccione el monto monto :$");
+  const FiltrarXPrecio = modeloYPrecio.filter(
+    (celular) => celular.precio > filtro
+  );
+  alert(
+    " Estos son los productos que coinciden con su busqueda : \n 1) " +
+      FiltrarXPrecio[0].nombre +
+      " : $ " +
+      FiltrarXPrecio[0].precio +
+      "\n 2)" +
+      FiltrarXPrecio[1].nombre +
+      " : $ " +
+      FiltrarXPrecio[1].precio
+  );
+  compra = prompt(
+    "Hola " +
+      nombreUsuario +
+      " " +
+      "\nPor favor ingrese el numero que corresponda al producto que deseas adquirir:\n 1) " +
+      mostrar(0) +
+      "\n 2)" +
+      mostrar(1) +
+      "\n 3) " +
+      mostrar(2) +
+      "\n 4) " +
+      mostrar(3) +
+      "\n 5) " +
+      mostrar(4) +
+      "\n 0)📥 Salir b) Filtrar por precio c) 💸Desea finalizar su compra? "
+  );
+}
+//
 if (compra == "c") {
   // variables utiles para Mostrar Indiv al usuario
   let intereses = 0;

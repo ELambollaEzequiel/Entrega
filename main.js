@@ -37,29 +37,27 @@ function buscar(pMinimo, pMaxmimo) {
     celular.precio > pMinimo && celular.precio < pMaxmimo;
   });
   console.table(filtrarPorPrecio);
-  const arrFiltrado = filtrarPorPrecio.map((celular) => {
-    return {
-      modelo: celular.modelo,
-      precio: celular.precio,
-    };
-  });
-  return arrFiltrado;
+  return filtrarPorPrecio;
 }
 
 // variables Globales de conteo y de total
 let precioTotal = 0;
 let cantProducto = 0;
-const modeloYPrecio = celulares.map((celular) => {
-  return {
-    modelo: celular.modelo,
-    precio: celular.precio,
-  };
-});
+function complicada(arr) {
+  const modeloYPrecio = arr.map((celular) => {
+    return {
+      modelo: celular.modelo,
+      precio: celular.precio,
+    };
+  });
+  return modeloYPrecio;
+}
+
 const calcularPrecio = (i) => {
   precioTotal = precioTotal + arr[i].precio;
 };
 function mostrar(arr, i) {
-  return arr[i].modelo + " 📱 : $ " + arr[i].precio;
+  return complicada(arr)[i].modelo + " 📱 : $ " + arr[i].precio;
 }
 //PROMPTS
 let nombreUsuario = prompt(
@@ -70,15 +68,15 @@ let compra = prompt(
     nombreUsuario +
     " " +
     "\nPor favor ingrese el numero que corresponda al producto que deseas adquirir: \n 1) " +
-    mostrar(modeloYPrecio, 0) +
+    mostrar(complicada(celulares), 0) +
     "\n 2) " +
-    mostrar(modeloYPrecio, 1) +
+    mostrar(complicada(celulares), 1) +
     "\n 3) " +
-    mostrar(modeloYPrecio, 2) +
+    mostrar(complicada(celulares), 2) +
     "\n 4) " +
-    mostrar(modeloYPrecio, 3) +
+    mostrar(complicada(celulares), 3) +
     "\n 5) " +
-    mostrar(modeloYPrecio, 4) +
+    mostrar(complicada(celulares), 4) +
     "\n 0) 📥 Salir b) Filtra por precio c) 💸Desea finalizar su compra?"
 );
 while (compra != "0" && compra != "c") {

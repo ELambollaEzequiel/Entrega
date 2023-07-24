@@ -31,33 +31,21 @@ let celulares = [
     precio: 68900,
   },
 ];
-//funcion buscar
-function buscar(pMinimo, pMaxmimo) {
-  const filtrarPorPrecio = celulares.filter((celular) => {
-    celular.precio > pMinimo && celular.precio < pMaxmimo;
-  });
-  console.table(filtrarPorPrecio);
-  return filtrarPorPrecio;
-}
 
 // variables Globales de conteo y de total
 let precioTotal = 0;
 let cantProducto = 0;
-function complicada(arr) {
-  const modeloYPrecio = arr.map((celular) => {
-    return {
-      modelo: celular.modelo,
-      precio: celular.precio,
-    };
-  });
-  return modeloYPrecio;
-}
-
-const calcularPrecio = (i) => {
-  precioTotal = precioTotal + arr[i].precio;
+const modeloYPrecio = celulares.map((celular) => {
+  return {
+    modelo: celular.modelo,
+    precio: celular.precio,
+  };
+});
+const calcularPrecio = (arr, i) => {
+  precioTotal = precioTotal + arr.precio;
 };
-function mostrar(arr, i) {
-  return complicada(arr)[i].modelo + " 📱 : $ " + arr[i].precio;
+function mostrar(arr) {
+  return arr.modelo + " 📱 : $ " + arr.precio;
 }
 //PROMPTS
 let nombreUsuario = prompt(
@@ -68,80 +56,89 @@ let compra = prompt(
     nombreUsuario +
     " " +
     "\nPor favor ingrese el numero que corresponda al producto que deseas adquirir: \n 1) " +
-    mostrar(complicada(celulares), 0) +
+    mostrar(modeloYPrecio[0]) +
     "\n 2) " +
-    mostrar(complicada(celulares), 1) +
+    mostrar(modeloYPrecio[1]) +
     "\n 3) " +
-    mostrar(complicada(celulares), 2) +
+    mostrar(modeloYPrecio[2]) +
     "\n 4) " +
-    mostrar(complicada(celulares), 3) +
+    mostrar(modeloYPrecio[3]) +
     "\n 5) " +
-<<<<<<< Updated upstream
-    mostrar(complicada(celulares), 4) +
-    "\n 0) 📥 Salir b) Filtra por precio c) 💸Desea finalizar su compra?"
-=======
-    mostrar(4) +
+    mostrar(modeloYPrecio[4]) +
     "\n 0) 📥 Salir b) Filtrar por precio c)  c) 💸Desea finalizar su compra?"
->>>>>>> Stashed changes
 );
-while (compra != "0" && compra != "c" && compra != "b") {
+while (compra != "0" && compra != "c") {
   switch (compra) {
     case "1":
-      alert("Usted agrego : " + mostrar(modeloYPrecio, 0));
-      calcularPrecio(modeloYPrecio, 0);
+      alert("Usted agrego : " + mostrar(modeloYPrecio[0]));
+      calcularPrecio(modeloYPrecio[0]);
       console.log(precioTotal);
       cantProducto++;
       console.log(cantProducto);
       break;
     case "2":
-      alert("Usted agrego : " + mostrar(modeloYPrecio, 1));
-      calcularPrecio(modeloYPrecio, 1);
+      alert("Usted agrego : " + mostrar(modeloYPrecio[1]));
+      calcularPrecio(modeloYPrecio[1]);
       console.log(precioTotal);
       cantProducto++;
       console.log(cantProducto);
       break;
     case "3":
-      alert("Usted agrego : " + mostrar(modeloYPrecio, 2));
-      calcularPrecio(modeloYPrecio, 2);
+      alert("Usted agrego : " + mostrar(modeloYPrecio[2]));
+      calcularPrecio(modeloYPrecio[2]);
       console.log(precioTotal);
       cantProducto++;
       console.log(cantProducto);
       break;
     case "4":
-      alert("Usted agrego : " + mostrar(modeloYPrecio, 3));
-      calcularPrecio(modeloYPrecio, 3);
+      alert("Usted agrego : " + mostrar(modeloYPrecio[3]));
+      calcularPrecio(modeloYPrecio[3]);
       console.log(precioTotal);
       cantProducto++;
       console.log(cantProducto);
       break;
     case "5":
-      alert("Usted agrego : " + mostrar(modeloYPrecio, 4));
-      calcularPrecio(modeloYPrecio, 4);
+      alert("Usted agrego : " + mostrar(modeloYPrecio[4]));
+      calcularPrecio(modeloYPrecio[4]);
       console.log(precioTotal);
       cantProducto++;
       console.log(cantProducto);
       break;
     case "b":
-      let pMinimo = prompt("Por favor Ingrese el Precio Minimo : ");
-      let pMaxmimo = prompt("Por favor Ingrese el Precio Maximo : ");
-      let resultadoFiltrar = buscar(pMinimo, pMaxmimo);
-      let resultFiltar = prompt(
-        "Cual de estos modelos desea comprar: 1)" +
-          mostrar(resultadoFiltrar, 0) +
-          "2)" +
-          mostrar(resultadoFiltrar, 1)
+      let pMinimo = parseInt(prompt("Seleccione el monto MINIMO :"));
+      let pMaximo = parseInt(prompt("seleccione el monto MAXIMO :"));
+
+      const filtrarXPrecio = modeloYPrecio.filter(
+        (celular) => celular.precio > pMinimo && celular.precio < pMaximo
       );
-      console.log(resultFiltar);
-      if ((resultFiltar = "1")) {
-        alert("Usted agrego : " + mostrar(opcionFiltrado, 0));
-        calcularPrecio(opcionFiltrado, 0);
+      let mostrarenpantalla = prompt(
+        " Estos son los productos que coinciden con su busqueda : \n 1) " +
+          mostrar(filtrarXPrecio[0]) +
+          "\n 2)" +
+          mostrar(filtrarXPrecio[1])
+      );
+      if (mostrarenpantalla == "1") {
+        alert("Usted agrego : " + mostrar(filtrarXPrecio[0]));
+        console.table(filtrarXPrecio);
+        calcularPrecio(filtrarXPrecio[0]);
+        console.log(precioTotal);
+        cantProducto++;
+        console.log(cantProducto);
+      } else if (mostrarenpantalla == "2") {
+        alert("Usted agrego : " + mostrar(filtrarXPrecio[1]));
+        console.table(filtrarXPrecio);
+        calcularPrecio(filtrarXPrecio[1]);
+        console.log(precioTotal);
+        cantProducto++;
+        console.log(cantProducto);
       } else {
-        alert("Usted agrego : " + mostrar(opcionFiltrado, 1));
-        calcularPrecio(opcionFiltrado, 2);
+        alert("el numero ingresado es incorrecto");
       }
-      console.log(precioTotal);
-      cantProducto++;
-      console.log(cantProducto);
+
+      // calcularPrecio(4);
+      // console.log(precioTotal);
+      // cantProducto++;
+      // console.log(cantProducto);
       break;
     default:
       alert("el numero ingresado es incorrecto");
@@ -171,57 +168,21 @@ while (compra != "0" && compra != "c" && compra != "b") {
       nombreUsuario +
       " " +
       "\nPor favor ingrese el numero que corresponda al producto que deseas adquirir:\n 1) " +
-      mostrar(modeloYPrecio, 0) +
-      "\n 2)" +
-      mostrar(modeloYPrecio, 1) +
+      mostrar(modeloYPrecio[0]) +
+      "\n 2) " +
+      mostrar(modeloYPrecio[1]) +
       "\n 3) " +
-      mostrar(modeloYPrecio, 2) +
+      mostrar(modeloYPrecio[2]) +
       "\n 4) " +
-      mostrar(modeloYPrecio, 3) +
+      mostrar(modeloYPrecio[3]) +
       "\n 5) " +
-<<<<<<< Updated upstream
-      mostrar(modeloYPrecio, 4) +
-      "\n 0)📥 Salir b) Filtra por precio c) 💸Desea finalizar su compra? "
-=======
-      mostrar(4) +
+      mostrar(modeloYPrecio[4]) +
       "\n 0)📥 Salir b) Filtrar por precio c) 💸Desea finalizar su compra? "
->>>>>>> Stashed changes
   );
 }
 
 //
-while (compra == "b") {
-  let filtro = prompt("seleccione el monto monto :$");
-  const FiltrarXPrecio = modeloYPrecio.filter(
-    (celular) => celular.precio > filtro
-  );
-  alert(
-    " Estos son los productos que coinciden con su busqueda : \n 1) " +
-      FiltrarXPrecio[0].nombre +
-      " : $ " +
-      FiltrarXPrecio[0].precio +
-      "\n 2)" +
-      FiltrarXPrecio[1].nombre +
-      " : $ " +
-      FiltrarXPrecio[1].precio
-  );
-  compra = prompt(
-    "Hola " +
-      nombreUsuario +
-      " " +
-      "\nPor favor ingrese el numero que corresponda al producto que deseas adquirir:\n 1) " +
-      mostrar(0) +
-      "\n 2)" +
-      mostrar(1) +
-      "\n 3) " +
-      mostrar(2) +
-      "\n 4) " +
-      mostrar(3) +
-      "\n 5) " +
-      mostrar(4) +
-      "\n 0)📥 Salir b) Filtrar por precio c) 💸Desea finalizar su compra? "
-  );
-}
+
 //
 if (compra == "c") {
   // variables utiles para Mostrar Indiv al usuario

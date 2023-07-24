@@ -49,7 +49,7 @@ function mostrar(arr) {
 }
 //PROMPTS
 let nombreUsuario = prompt(
-  "Hi!✋ Bienvenido a PhoneStore 📱, por favor ingrese su nombre de usuario"
+  "Hi!✋ Bienvenido a Selecta Tech 📱, por favor ingrese su nombre de usuario"
 );
 let compra = prompt(
   "Hola ✋" +

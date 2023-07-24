@@ -31,21 +31,35 @@ let celulares = [
     precio: 68900,
   },
 ];
+//funcion buscar
+function buscar(pMinimo, pMaxmimo) {
+  const filtrarPorPrecio = celulares.filter((celular) => {
+    celular.precio > pMinimo && celular.precio < pMaxmimo;
+  });
+  console.table(filtrarPorPrecio);
+  const arrFiltrado = filtrarPorPrecio.map((celular) => {
+    return {
+      modelo: celular.modelo,
+      precio: celular.precio,
+    };
+  });
+  return arrFiltrado;
+}
 
 // variables Globales de conteo y de total
 let precioTotal = 0;
 let cantProducto = 0;
 const modeloYPrecio = celulares.map((celular) => {
   return {
-    nombre: celular.modelo,
+    modelo: celular.modelo,
     precio: celular.precio,
   };
 });
 const calcularPrecio = (i) => {
-  precioTotal = precioTotal + modeloYPrecio[i].precio;
+  precioTotal = precioTotal + arr[i].precio;
 };
-function mostrar(i) {
-  return modeloYPrecio[i].nombre + " 📱 : $ " + modeloYPrecio[i].precio;
+function mostrar(arr, i) {
+  return arr[i].modelo + " 📱 : $ " + arr[i].precio;
 }
 //PROMPTS
 let nombreUsuario = prompt(
@@ -56,50 +70,72 @@ let compra = prompt(
     nombreUsuario +
     " " +
     "\nPor favor ingrese el numero que corresponda al producto que deseas adquirir: \n 1) " +
-    mostrar(0) +
+    mostrar(modeloYPrecio, 0) +
     "\n 2) " +
-    mostrar(1) +
+    mostrar(modeloYPrecio, 1) +
     "\n 3) " +
-    mostrar(2) +
+    mostrar(modeloYPrecio, 2) +
     "\n 4) " +
-    mostrar(3) +
+    mostrar(modeloYPrecio, 3) +
     "\n 5) " +
-    mostrar(4) +
-    "\n 0) 📥 Salir  c) 💸Desea finalizar su compra?"
+    mostrar(modeloYPrecio, 4) +
+    "\n 0) 📥 Salir b) Filtra por precio c) 💸Desea finalizar su compra?"
 );
 while (compra != "0" && compra != "c") {
   switch (compra) {
     case "1":
-      alert("Usted agrego : " + mostrar(0));
-      calcularPrecio(0);
+      alert("Usted agrego : " + mostrar(modeloYPrecio, 0));
+      calcularPrecio(modeloYPrecio, 0);
       console.log(precioTotal);
       cantProducto++;
       console.log(cantProducto);
       break;
     case "2":
-      alert("Usted agrego : " + mostrar(1));
-      calcularPrecio(1);
+      alert("Usted agrego : " + mostrar(modeloYPrecio, 1));
+      calcularPrecio(modeloYPrecio, 1);
       console.log(precioTotal);
       cantProducto++;
       console.log(cantProducto);
       break;
     case "3":
-      alert("Usted agrego : " + mostrar(2));
-      calcularPrecio(2);
+      alert("Usted agrego : " + mostrar(modeloYPrecio, 2));
+      calcularPrecio(modeloYPrecio, 2);
       console.log(precioTotal);
       cantProducto++;
       console.log(cantProducto);
       break;
     case "4":
-      alert("Usted agrego : " + mostrar(3));
-      calcularPrecio(3);
+      alert("Usted agrego : " + mostrar(modeloYPrecio, 3));
+      calcularPrecio(modeloYPrecio, 3);
       console.log(precioTotal);
       cantProducto++;
       console.log(cantProducto);
       break;
     case "5":
-      alert("Usted agrego : " + mostrar(4));
-      calcularPrecio(4);
+      alert("Usted agrego : " + mostrar(modeloYPrecio, 4));
+      calcularPrecio(modeloYPrecio, 4);
+      console.log(precioTotal);
+      cantProducto++;
+      console.log(cantProducto);
+      break;
+    case "b":
+      let pMinimo = prompt("Por favor Ingrese el Precio Minimo : ");
+      let pMaxmimo = prompt("Por favor Ingrese el Precio Maximo : ");
+      let resultadoFiltrar = buscar(pMinimo, pMaxmimo);
+      let resultFiltar = prompt(
+        "Cual de estos modelos desea comprar: 1)" +
+          mostrar(resultadoFiltrar, 0) +
+          "2)" +
+          mostrar(resultadoFiltrar, 1)
+      );
+      console.log(resultFiltar);
+      if ((resultFiltar = "1")) {
+        alert("Usted agrego : " + mostrar(opcionFiltrado, 0));
+        calcularPrecio(opcionFiltrado, 0);
+      } else {
+        alert("Usted agrego : " + mostrar(opcionFiltrado, 1));
+        calcularPrecio(opcionFiltrado, 2);
+      }
       console.log(precioTotal);
       cantProducto++;
       console.log(cantProducto);
@@ -132,16 +168,16 @@ while (compra != "0" && compra != "c") {
       nombreUsuario +
       " " +
       "\nPor favor ingrese el numero que corresponda al producto que deseas adquirir:\n 1) " +
-      mostrar(0) +
+      mostrar(modeloYPrecio, 0) +
       "\n 2)" +
-      mostrar(1) +
+      mostrar(modeloYPrecio, 1) +
       "\n 3) " +
-      mostrar(2) +
+      mostrar(modeloYPrecio, 2) +
       "\n 4) " +
-      mostrar(3) +
+      mostrar(modeloYPrecio, 3) +
       "\n 5) " +
-      mostrar(4) +
-      "\n 0)📥 Salir c) 💸Desea finalizar su compra? "
+      mostrar(modeloYPrecio, 4) +
+      "\n 0)📥 Salir b) Filtra por precio c) 💸Desea finalizar su compra? "
   );
 }
 

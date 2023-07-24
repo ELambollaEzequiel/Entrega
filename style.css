@@ -156,9 +156,63 @@ header ul li :hover {
 .container3 {
   margin-left: 12%;
   margin-right: 13%;
-  background: black;
-  width: 80%;
+
+  width: 78%;
   height: 1000px;
   margin-top: 80px;
-  justify-self: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.cards {
+  height: 950px;
+  width: 30%;
+  background: white;
+  border-radius: 30px;
+  align-self: center;
+  justify-content: center;
+  box-shadow: 9px 15px 20px gray;
+  flex-direction: column;
+}
+.img-container {
+  width: 100%;
+  height: 80%;
+}
+
+.cards img {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+}
+.txt-container {
+  padding: 10px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.txt-container h3 {
+  align-self: center;
+}
+.txt-container p {
+  align-self: flex-end;
+  justify-self: flex-end;
+}
+.txt-container button {
+  padding: 10px;
+  border-radius: 20px;
+  align-self: flex-end;
+  justify-self: flex-end;
+}
+.card-fin {
+  height: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.txt-container button:hover {
+  background-color: black;
+  color: white;
+  border: 1px solid white;
 }
